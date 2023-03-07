@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-oktarouter6-dev-111555-authRole",
+      "UnauthRoleArn": "arn:aws:iam::332357161676:role/amplify-oktarouter6-dev-111555-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::332357161676:role/amplify-oktarouter6-dev-111555-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-oktarouter6-dev-111555-deployment",
+      "UnauthRoleName": "amplify-oktarouter6-dev-111555-unauthRole",
+      "StackName": "amplify-oktarouter6-dev-111555",
+      "StackId": "arn:aws:cloudformation:us-east-1:332357161676:stack/amplify-oktarouter6-dev-111555/572afce0-bd03-11ed-9e66-1299a93f3a87",
+      "AmplifyAppId": "d3rawyctugqu5d"
+    },
+    "categories": {
+      "api": {
+        "oktarouter6": {}
+      }
+    }
+  }
+}

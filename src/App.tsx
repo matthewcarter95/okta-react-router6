@@ -4,6 +4,7 @@ import { OktaAuth, toRelativeUrl } from "@okta/okta-auth-js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { LoginCallback, Security } from "@okta/okta-react";
 import { Login } from "./components/login";
+import  Profile from './components/profile';
 
 import Todos from "./components/todos";
 import { RequiredAuth } from "./components/secureRoute";
@@ -31,6 +32,7 @@ function App() {
         <Routes>
           <Route path="/callback" element={<LoginCallback />} />
           <Route path="/" element={<Login />} />
+          <Route path="/profile" element={<Profile/>}/>
           <Route path="/todos" element={<RequiredAuth />}>
             <Route path="" element={<Todos />} />
           </Route>

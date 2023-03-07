@@ -15,7 +15,7 @@ export function Login() {
   ) : (
     <div className="form-wrapper">
       <form onSubmit={handleLoginClick}>
-        <h2>Welcome Back!</h2>
+        <h2>Welcome!</h2>
         <input type="submit" value="Login" />
       </form>
     </div>

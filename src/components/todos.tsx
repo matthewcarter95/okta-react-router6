@@ -1,4 +1,3 @@
-/* src/App.js */
 import { useOktaAuth } from "@okta/okta-react";
 import React, { useEffect, useState } from 'react'
 // import { Route, useNavigate } from 'react-router-dom';
@@ -67,26 +66,24 @@ function Todos() {
 
   if (!errors && authState?.isAuthenticated) {
     return (
-      <div style={styles.container}>
+      <div >
         <h2>My Todos</h2>
         <input
           onChange={event => setInput('name', event.target.value)}
-          style={styles.input}
           value={formState.name}
           placeholder="Name"
         />
         <input
           onChange={event => setInput('description', event.target.value)}
-          style={styles.input}
           value={formState.description}
           placeholder="Description"
         />
-        <button style={styles.button} onClick={addTodo}>Create Todo</button>
+        <button onClick={addTodo}>Create Todo</button>
         {
           todos.map((todo, index) => (
-            <div key={todo.id ? todo.id : index} style={styles.todo}>
-              <p style={styles.todoName}>{todo.name}</p>
-              <p style={styles.todoDescription}>{todo.description}</p>
+            <div key={todo.id ? todo.id : index}>
+              <p>{todo.name}</p>
+              <p>{todo.description}</p>
             </div>
           ))
         }
@@ -97,13 +94,13 @@ function Todos() {
 
 
 
-const styles = {
-  container: { width: 400, margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 20 },
-  todo: {  marginBottom: 15 },
-  input: { border: 'none', backgroundColor: '#ddd', marginBottom: 10, padding: 8, fontSize: 18 },
-  todoName: { fontSize: 20, fontWeight: 'bold' },
-  todoDescription: { marginBottom: 0 },
-  button: { backgroundColor: 'black', color: 'white', outline: 'none', fontSize: 18, padding: '12px 0px' }
-}
+// const styles = {
+//   container: { width: 400, margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 20 },
+//   todo: {  marginBottom: 15 },
+//   input: { border: 'none', backgroundColor: '#ddd', marginBottom: 10, padding: 8, fontSize: 18 },
+//   todoName: { fontSize: 20, fontWeight: 'bold' },
+//   todoDescription: { marginBottom: 0 },
+//   button: { backgroundColor: 'black', color: 'white', outline: 'none', fontSize: 18, padding: '12px 0px' }
+// }
 
 export default Todos

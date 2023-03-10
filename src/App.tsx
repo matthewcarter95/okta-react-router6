@@ -6,11 +6,11 @@ import { LoginCallback, Security } from "@okta/okta-react";
 import { Login } from "./components/login";
 import  Profile from './components/profile';
 import Bucket from './components/bucket';
-import GetToken from './components/requesttoken';
+// import GetToken from './components/requesttoken';
 import Todos from "./components/todos";
 import { RequiredAuth } from "./components/secureRoute";
-mport { Amplify } from 'aws-amplify';
-import awsExports from "../aws-exports";
+import { Amplify } from 'aws-amplify';
+import awsExports from "./aws-exports";
 Amplify.configure(awsExports);
 
 function App() {
@@ -36,7 +36,6 @@ function App() {
         <Routes>
           <Route path="/callback" element={<LoginCallback />} />
           <Route path="/" element={<Login />} />
-          <Route path="/gettoken" element={<GetToken/>}/>
           <Route path="/bucket" element={<Bucket/>}/>
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/todos" element={<RequiredAuth />}>

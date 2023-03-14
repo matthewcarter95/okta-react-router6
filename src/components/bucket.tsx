@@ -4,7 +4,8 @@ import { Header } from 'semantic-ui-react';
 import { S3Client,S3 } from "@aws-sdk/client-s3"
 import { ListObjectsCommand } from "@aws-sdk/client-s3"
 // const {fromIni} = require("@aws-sdk/credential-providers");
-import { fromWebToken } from "@aws-sdk/credential-providers";
+// Resolve Amplify Build issue
+// import { fromWebToken } from "@aws-sdk/credential-providers";
 
 
 function openIdProvider() {
@@ -45,31 +46,31 @@ function callS3() {
   //   },
   // });
 
-  const s3client = new S3({
-    region: "us-east-2",
-    credentials: fromWebToken({
-      // Required. ARN of the role that the caller is assuming.
-      roleArn: "arn:aws:iam::204352680806:role/OktaOIDCroleReadS3",
-      // Required. The OAuth 2.0 access token or OpenID Connect ID token that is provided by the
-      // identity provider.
-      webIdentityToken:  openIdProvider(),
-      // Optional. Custom STS client configurations overriding the default ones.
-      // clientConfig: { region },
-      // Optional. A function that assumes a role with web identity and returns a promise fulfilled
-      // with credentials for the assumed role.
-      // roleAssumerWithWebIdentity,
-      // Optional. An identifier for the assumed role session.
-      roleSessionName: "session_123",
-      // Optional. The fully qualified host component of the domain name of the identity provider.
-      providerId: "cis.demo-connect.us",
-      // Optional. ARNs of the IAM managed policies that you want to use as managed session.
-      policyArns: [{ arn: "arn:aws:iam::204352680806:policy/S3writeToBucket" }],
-      // Optional. An IAM policy in JSON format that you want to use as an inline session policy.
-      // policy: "JSON_STRING",
-      // Optional. The duration, in seconds, of the role session. Default to 3600.
-      durationSeconds: 7200,
-    }),
-  });
+  // const s3client = new S3({
+  //   region: "us-east-2",
+  //   credentials: fromWebToken({
+  //     // Required. ARN of the role that the caller is assuming.
+  //     roleArn: "arn:aws:iam::204352680806:role/OktaOIDCroleReadS3",
+  //     // Required. The OAuth 2.0 access token or OpenID Connect ID token that is provided by the
+  //     // identity provider.
+  //     webIdentityToken:  openIdProvider(),
+  //     // Optional. Custom STS client configurations overriding the default ones.
+  //     // clientConfig: { region },
+  //     // Optional. A function that assumes a role with web identity and returns a promise fulfilled
+  //     // with credentials for the assumed role.
+  //     // roleAssumerWithWebIdentity,
+  //     // Optional. An identifier for the assumed role session.
+  //     roleSessionName: "session_123",
+  //     // Optional. The fully qualified host component of the domain name of the identity provider.
+  //     providerId: "cis.demo-connect.us",
+  //     // Optional. ARNs of the IAM managed policies that you want to use as managed session.
+  //     policyArns: [{ arn: "arn:aws:iam::204352680806:policy/S3writeToBucket" }],
+  //     // Optional. An IAM policy in JSON format that you want to use as an inline session policy.
+  //     // policy: "JSON_STRING",
+  //     // Optional. The duration, in seconds, of the role session. Default to 3600.
+  //     durationSeconds: 7200,
+  //   }),
+  // });
 
   const bucketInfo = {
     'Bucket': 'airforceweathersensordatabucket'

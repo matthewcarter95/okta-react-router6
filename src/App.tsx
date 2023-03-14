@@ -23,6 +23,12 @@ function App() {
     redirectUri:
       process.env.REACT_APP_OKTA_BASE_REDIRECT_URI + "/callback",
   });
+  //   const oktaAuth = new OktaAuth({
+  //   issuer: 'https://demo--cisforfedprep.okta.com/oauth2/default',
+  //   clientId: '0oa49zm0l8U4WHON5697',
+  //   redirectUri:
+  //     process.env.REACT_APP_OKTA_BASE_REDIRECT_URI + "/callback",
+  // });
 
   const restoreOriginalUri = useCallback(
     async (_oktaAuth: OktaAuth, originalUri: string) => {

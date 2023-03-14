@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
-import { Header, Icon, Table } from 'semantic-ui-react';
+// import { Header, Table } from 'semantic-ui-react';
 
 function  Profile() {
   const { authState, oktaAuth } = useOktaAuth();
@@ -30,19 +30,18 @@ function  Profile() {
   return (
     <div>
       <div>
-        <Header as="h1">
-          <Icon name="drivers license" />
+        <h1>
           {' '}
           My User Profile (ID Token Claims)
           {' '}
-        </Header>
+        </h1>
         <p>
           Below is the information from your ID token which was obtained during the &nbsp;
           <a href="https://developer.okta.com/docs/guides/implement-auth-code-pkce">PKCE Flow</a>
           {' '}
           and is now stored in local storage.
         </p>
-        <Table>
+        <table>
           <thead>
             <tr>
               <th>Claim</th>
@@ -62,7 +61,7 @@ function  Profile() {
               );
             })}
           </tbody>
-        </Table>
+        </table>
       </div>
     </div>
   );

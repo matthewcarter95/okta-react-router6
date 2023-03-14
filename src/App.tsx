@@ -11,6 +11,9 @@ import Todos from "./components/todos";
 import { RequiredAuth } from "./components/secureRoute";
 import { Amplify } from 'aws-amplify';
 import awsExports from "./aws-exports";
+import React from "react";
+import Product from './components/initiate';
+import Initiate from "./components/initiate";
 Amplify.configure(awsExports);
 
 function App() {
@@ -34,6 +37,7 @@ function App() {
     <Router>
       <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
         <Routes>
+          <Route path="/initiate" element={<Initiate />} />
           <Route path="/callback" element={<LoginCallback />} />
           <Route path="/" element={<Login />} />
           <Route path="/bucket" element={<Bucket/>}/>
@@ -41,8 +45,10 @@ function App() {
           <Route path="/todos" element={<RequiredAuth />}>
             <Route path="" element={<Todos />} />
           </Route>
+          
         </Routes>
       </Security>
+      
     </Router>
   );
 }

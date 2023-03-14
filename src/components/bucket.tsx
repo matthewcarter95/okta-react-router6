@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
-import { Header, Icon, Table } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 import { S3Client,S3 } from "@aws-sdk/client-s3"
 import { ListObjectsCommand } from "@aws-sdk/client-s3"
 // const {fromIni} = require("@aws-sdk/credential-providers");
@@ -152,11 +152,11 @@ function  Bucket() {
   return (
     <div>
       <div>
-        <Header as="h1">
+        <h1>
           {' '}
           Okta-Protected S3 Buckets
           {' '}
-        </Header>
+        </h1>
       </div>
     </div>
   );

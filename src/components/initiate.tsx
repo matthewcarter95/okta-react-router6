@@ -2,9 +2,10 @@ import React, { } from 'react';
 import { OktaAuth } from '@okta/okta-auth-js';
 
 const oktaAuth = new OktaAuth({
-  issuer: 'https://cis.demo-connect.us/oauth2/default',
-  clientId: '0oa49zm0l8U4WHON5697',
-  redirectUri: window.location.origin + '/callback'
+  issuer: process.env.REACT_APP_OKTA_ISSUER,
+  clientId: process.env.REACT_APP_OKTA_CLIENT_ID,
+  redirectUri:
+    process.env.REACT_APP_OKTA_BASE_REDIRECT_URI + "/callback"
 });
 
 

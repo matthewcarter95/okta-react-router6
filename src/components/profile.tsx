@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
+import logo from '../longbeach.png'
 // import { Header, Table } from 'semantic-ui-react';
 
 function  Profile() {
@@ -32,7 +33,11 @@ function  Profile() {
       <div>
         <h1>
           {' '}
-          My User Profile (ID Token Claims)
+          
+          <img src={logo} alt="Logo" />
+          <p></p>
+          <p>My User Profile (ID Token Claims)</p>
+          
           {' '}
         </h1>
         <p>

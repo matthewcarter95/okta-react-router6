@@ -11,17 +11,17 @@ const oktaAuth = new OktaAuth({
 async function Initiate() {
   await oktaAuth.signInWithRedirect();
 
-  return (
-    <div>
-      <div>
-        <h1>
-          {' '}
-          Logging you in...
-          {' '}
-        </h1>
-      </div>
-    </div>
-  );
+  // return (
+  //   <div>
+  //     <div>
+  //       <h1>
+  //         {' '}
+  //         Logging you in...
+  //         {' '}
+  //       </h1>
+  //     </div>
+  //   </div>
+  // );
 }
 
 export default Initiate;

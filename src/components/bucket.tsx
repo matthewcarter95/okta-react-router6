@@ -149,14 +149,27 @@ function  Bucket() {
   
   const getTokenFromOkta = async () =>  {
     const okta_token = await oktaAuth.tokenManager.get("idToken");
-    // console.log(jwt_decode(okta_token.idToken));
-    // return jwt_decode(okta_token.idToken);
     const token_value = okta_token.idToken;
-
     console.log(token_value);
     return(token_value);
 
   }
+
+  const getIdTokenLocalStorage = () => {
+    var TokenObj = JSON.parse(window.localStorage.getItem("okta-token-storage")|| '{}');
+    console.log(TokenObj.idToken.idToken);
+    return (TokenObj.idToken.idToken);
+
+  }
+
+  const getAccessTokenLocalStorage = () => {
+    var TokenObj = JSON.parse(window.localStorage.getItem("okta-token-storage")|| '{}');
+    console.log(TokenObj.accessToken.accessToken);
+    return (TokenObj.accessToken.accessToken);
+
+  }
+
+  
 
   const getObjectFromS3 = async () =>  {
     const command = new GetObjectCommand(objectInput);
@@ -165,12 +178,12 @@ function  Bucket() {
 
   var oidcCredentials = fromWebToken({
     roleArn: "arn:aws:iam::204352680806:role/OktaOIDCroleReadS3",
-    roleSessionName: "session_124",
+    roleSessionName: "localstorage",
     durationSeconds: 7200,
-    // webIdentityToken: "eyJraWQiOiJBRzg2VVNNUHQydU54Uzd0NVhqZ2dGUEN1LWhRMVJGMkJPQVdZSEhCaHRnIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIwMHUzeHM3MHpwWDJPaUgxbjY5NyIsIm5hbWUiOiJNYXR0IENhcnRlciIsImVtYWlsIjoibWF0dC5jYXJ0ZXJAb2t0YS5jb20iLCJ2ZXIiOjEsImlzcyI6Imh0dHBzOi8vZGVtby0tY2lzZm9yZmVkcHJlcC5va3RhLmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6IjBvYTQ5em0wbDhVNFdIT041Njk3IiwiaWF0IjoxNjc5MzMyNTU3LCJleHAiOjE2NzkzMzYxNTcsImp0aSI6IklELjVGLXR6RktEOGpZeFBNa1gwc0U4T1A2WEJSbzBGeGg3bUhMcDU0Y2dZYzgiLCJhbXIiOlsic3drIl0sImlkcCI6IjAwbzN4czcwcW5yVld6ZUpmNjk3Iiwibm9uY2UiOiJRN0I2bnVIbG5EOWZPRzFwY0VjV1MxYW5aZmh4cjM0b3MzeE5TWGlDQTY3MlJKdnBEa0lYNnJHYTA0ckxSQWFmIiwicHJlZmVycmVkX3VzZXJuYW1lIjoibWF0dC5jYXJ0ZXJAb2t0YS5jb20iLCJhdXRoX3RpbWUiOjE2NzkzMzI1NTUsImF0X2hhc2giOiJ5WlhSd2ktOXloMXZQTlRQQW1zc1ZRIn0.djlqlKHJeQeDBLz_evfe8j01KuDnH-YT6n3RsmNXnbF8REXWlhjpbkdj0za2ZOTKuNtCZ3D2zo42OUKR8J-J1XWiYxiM2E6z52iELUWF_edgH6JNPIeysWke4ZKrOAknkVvWUlOm9H_xlOaeBkhVfClCdIZ7-xWG9agMG2mxxFQjmh1IH3GyfhuISy7hPsxMmmRSyOlm-eShLA_nDa_OAXMlt_e2Dij_fysdL0XtJD-zRLvvAFNrC_jfoS2q-R81cediwZjb_Gu6l-E_0PZynLS1L6sz7yPSoh1EkJesGuKzQb2I7A_HP3KiplLEX-f6o-ql4c7QZhuLxNGO4U7b5A"
-    webIdentityToken:  getTokenFromOkta()
+    // webIdentityToken: getTokenFromString()
+    webIdentityToken:  getIdTokenLocalStorage()
+    // webIdentityToken:  getTokenFromOkta()
   })
-  // console.log(oidcCredentials);
 
   const s3client = new S3({
     region: "us-east-2",
